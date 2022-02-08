@@ -30,16 +30,16 @@ namespace CSknowledgePro
         public string designation;
     }
 
-    interface iAddStudent {
-        void AddStudents();
+    public class vAddStudent {
+        public virtual void AddStudents(){}
     }
 
-    public class AddStudent: iAddStudent
+    public class AddStudent: vAddStudent
     {
 
         public List<student> m_studList = new List<student>();
         public int m_nMaxStudents;
-        public void AddStudents()
+        public override void AddStudents()
         {
             Console.Write("Enter the number of students: ");
             int numStudents = Convert.ToInt32(Console.ReadLine());
@@ -75,14 +75,14 @@ namespace CSknowledgePro
         }
     }
 
-    interface iInputMarks {
-        void GetMarks(AddStudent a);
-        void ViewSingle(AddStudent a, int reg_no);
+    public class vInputMarks {
+        public virtual void GetMarks(AddStudent a){}
+        public virtual void ViewSingle(AddStudent a, int reg_no){}
     }
 
-    public class InputMarks : iInputMarks
+    public class InputMarks : vInputMarks
     {
-        public void GetMarks(AddStudent a)
+        public override void GetMarks(AddStudent a)
         {
             int[] marks = new int[5];
             for (int i = 0; i < a.m_nMaxStudents; i++)
@@ -103,7 +103,7 @@ namespace CSknowledgePro
 
         }
 
-        public void ViewSingle(AddStudent a, int reg_no)
+        public override void ViewSingle(AddStudent a, int reg_no)
         {
             for (int i = 0; i < a.m_nMaxStudents; i++)
             {
@@ -126,13 +126,13 @@ namespace CSknowledgePro
         }
     }
 
-    interface iInputCreds {
-        void GetCreds(AddStudent a);
+    public class vInputCreds {
+        public virtual void GetCreds(AddStudent a){}
     }
 
-    public class InputCreds : AddStudent
+    public class InputCreds : vInputCreds
     {
-        public void GetCreds(AddStudent a)
+        public override void GetCreds(AddStudent a)
         {
             Console.WriteLine("");
             int[] creds = new int[5];
@@ -155,13 +155,13 @@ namespace CSknowledgePro
         }
     }
 
-    interface iDisplayMarks{
-        void ViewMarks(AddStudent a);
+    public class vDisplayMarks{
+        public virtual void ViewMarks(AddStudent a){}
     }
 
-    sealed public class DisplayMarks : iDisplayMarks
+    sealed public class DisplayMarks : vDisplayMarks
     {
-        public void ViewMarks(AddStudent a)
+        public override void ViewMarks(AddStudent a)
         {
             Console.WriteLine("_______________________________________________________________");
             Console.WriteLine("SNo Student Name       Sub1   Sub2   Sub3   Sub4   Sub5   Total");
@@ -182,13 +182,13 @@ namespace CSknowledgePro
         }
     }
 
-    interface iDisplayCreds{
-        void ViewCreds(AddStudent a);
+    public class vDisplayCreds{
+        public virtual void ViewCreds(AddStudent a){}
     }
 
-    sealed public class DisplayCreds : InputCreds
+    sealed public class DisplayCreds : vDisplayCreds
     {
-        public void ViewCreds(AddStudent a)
+        public override void ViewCreds(AddStudent a)
         {
             Console.WriteLine("_______________________________________________________________");
             Console.WriteLine("SNo Student Name       Sub1   Sub2   Sub3   Sub4   Sub5   Total");

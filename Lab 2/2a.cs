@@ -227,11 +227,11 @@ namespace CSknowledgePro
                 switch (selection)
                 {
                     case 1:
+                        Console.WriteLine("Enter your register number : ");
+                        int reg_no = Convert.ToInt32(Console.ReadLine());
                         flag = true;
                         while (flag)
                         {
-                            Console.WriteLine("Enter your register number : ");
-                            int reg_no = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Select an option:\n1. View Marks\n2. View Attendance\n3. Exit to Main menu");
                             int selection1 = Convert.ToInt32(Console.ReadLine());
                             switch (selection1)

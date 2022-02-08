@@ -130,7 +130,7 @@ namespace CSknowledgePro
         void GetCreds(AddStudent a);
     }
 
-    public class InputCreds : AddStudent
+    public class InputCreds : iInputCreds
     {
         public void GetCreds(AddStudent a)
         {
@@ -159,8 +159,7 @@ namespace CSknowledgePro
         void ViewMarks(AddStudent a);
     }
 
-    sealed public class DisplayMarks : iDisplayMarks
-    {
+    sealed public class DisplayMarks : iDisplayMarks {
         public void ViewMarks(AddStudent a)
         {
             Console.WriteLine("_______________________________________________________________");
@@ -186,7 +185,7 @@ namespace CSknowledgePro
         void ViewCreds(AddStudent a);
     }
 
-    sealed public class DisplayCreds : InputCreds
+    sealed public class DisplayCreds : iDisplayCreds
     {
         public void ViewCreds(AddStudent a)
         {
